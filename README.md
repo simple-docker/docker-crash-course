@@ -28,7 +28,8 @@ Crash-Kurs
 
 Unter Windows zum Testen:
 
-    docker run --detach --name=test-mysql --env="MYSQL_ROOT_PASSWORD=root" --publish 3306:3306 mysql
+    docker run --detach --name=test-mysql --env="MYSQL_ROOT_PASSWORD=root" \
+    --publish 3306:3306 mysql
 
 ### Anpassung der Konfiguration
 
@@ -144,7 +145,8 @@ vgl. <https://docs.docker.com/storage/volumes/#choose-the--v-or---mount-flag>
 
 ## Docker-Instanzen verlinken
 
-    docker run --detach --name test-wordpress --link test-mysql:mysql --publish 8080:80 wordpress
+    docker run --detach --name test-wordpress --link test-mysql:mysql \
+    --publish 8080:80 wordpress
 
 * schauen, ob die Verlinkung funktioniert hat
 * mit wordpress verbinden und `cat /etc/hosts` aufrufen
@@ -159,7 +161,8 @@ siehe: <https://hub.docker.com/_/wordpress/>
 
 * `--publish $public_port:$instance_port$`
 
-        docker run --detach --name=test-mysql --env="MYSQL_ROOT_PASSWORD=root" --publish 6603:3306 mysql
+        docker run --detach --name=test-mysql --env="MYSQL_ROOT_PASSWORD=root" \
+        --publish 6603:3306 mysql
 
 ## Docker Compose
 
