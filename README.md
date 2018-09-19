@@ -273,7 +273,19 @@ Siehe Doku vom `mysql` Image: <https://hub.docker.com/_/mysql/>
 
 ## Docker in production
 
+* [aufräumen](https://docs.docker.com/config/pruning/) via `prune`
+  * einmal alles aufräumen: `docker system prune --volumes`
+* [live-restore](https://docs.docker.com/config/containers/live-restore/) (Container am Leben erhalten beim Neustart des docker-daemons)
+
+
+Weitere hilfreiche Tipps findet man hier:
+
 <https://docs.docker.com/config/labels-custom-metadata/#manage-labels-on-objects>
+
+## Erweiterte Container-Verwaltung
+
+* z.B. mit [Rancher](https://rancher.com/) (Kubernetes-Verwaltung, kostenpflichtig)
+* z.B. mit [Nexus](https://help.sonatype.com/repomanager3/private-registry-for-docker)
 
 ## Swarms und Stacks
 
