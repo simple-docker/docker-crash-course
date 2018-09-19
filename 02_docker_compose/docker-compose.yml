@@ -1,0 +1,36 @@
+#docker-compose.yml
+version: '3'
+services:
+  c-mysql:
+  # alternative: build: . <-- build from Dockerfile in current Folder
+    build:
+      context: .
+      dockerfile: mysql-Dockerfile
+    ports:
+      - "6603:3306"
+    volumes:
+      - ./custom-conf:/etc/mysql/conf.d
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    networks:
+        - the_only
+  c-wordpress:
+    image: wordpress
+    depends_on:
+      - c-mysql
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: c-mysql:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+    networks:
+      - the_only
+volumes:
+  mysql_data:
+networks:
+  the_only:
